@@ -1,0 +1,20 @@
+{
+	"name": "mern-blog",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"server": "nodemon"
+	},
+	"keywords": [],
+	"author": "Claudio Suarez",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2",
+		"mongodb": "^5.6.0"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.0",
+		"nodemon": "^2.0.22"
+	}
+}
