@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import articles from '../data/articles.js';
 
@@ -9,6 +9,18 @@ import Articles from '../components/Articles.js';
 const Article = () => {
 	const { name } = useParams();
 	const article = articles.find((x) => x.name === name);
+	const [articleInfo, setArticleInfo] = useState({ comments: [] });
+	useEffect(() => {
+		const fetchData = async () => {
+			const res = await fetch(`/api/articles/${name}`);
+			const body = await res.json();
+			setArticleInfo(body);
+			console.log(body);
+		};
+		fetchData();
+		console.log('Component Mounted');
+	}, [name]);
+
 	if (!article) return <NotFound />;
 	const otherArticles = articles.filter((x) => x.name !== article.name);
 	return (
